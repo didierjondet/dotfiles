@@ -6,6 +6,29 @@ ZSH_THEME="robbyrussell"
 # Useful oh-my-zsh plugins for Le Wagon bootcamps
 plugins=(git gitfast last-working-dir common-aliases sublime zsh-syntax-highlighting history-substring-search)
 
+
+
+function gac() {
+    git add .
+    git commit -a -m "${1:-\"update\"}"
+}
+function gacp() {
+    gac $1
+    git push "${3:-origin}" "${2:-master}"
+}
+
+function s {
+  git status
+}
+
+
+
+
+
+
+
+
+
 # (macOS-only) Prevent Homebrew from reporting - https://github.com/Homebrew/brew/blob/master/share/doc/homebrew/Analytics.md
 export HOMEBREW_NO_ANALYTICS=1
 
@@ -44,3 +67,5 @@ export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1 -a"
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
